@@ -32,18 +32,24 @@ with open(filepath, "r") as f:
 	reader = csv.reader(f)
 	ppfile = list(reader)
 
-for i, line in enumerate(ppfile):
-	results.append(ppfile[i][44])
+# Defining some horse functions
 
-	if int(ppfile[i][96]) == 0:
-		print "Maiden"
+# Calculates win percentage and appends to array
+def winpct(starts, wins, i):
+
+	if int(starts) == 0:
+		results[i].append("Maiden")
 	else:
-		x = float(ppfile[i][97])
-		y = float(ppfile[i][96])
-		results.append(x/y*100)
+		results[i].append(float(wins)/float(starts)*100)
+
+# Loop through array and perform calculations, append to results array
+for i, line in enumerate(ppfile):
+	results.append([ppfile[i][44]])
+
+	winpct(ppfile[i][96],ppfile[i][97],i)
+
 
 print results
 print
-print ppfile[0]
 
 # Next up, start data analysis. Functions? Class? Think about best way to solve.
