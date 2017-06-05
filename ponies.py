@@ -42,12 +42,20 @@ def winpct(starts, wins, i):
 	else:
 		results[i].append(float(wins)/float(starts)*100)
 
+#Horse Lasix today
+def lasix(meds, i):
+	if int(meds) == 1 or int(meds) == 3 or int(meds) == 4 or int(meds) == 5:
+		results[i].append("YES LASIX")
+	else:
+		results[i].append("no lasix")
+
+
 # Loop through array and perform calculations, append to results array
 for i, line in enumerate(ppfile):
 	results.append([ppfile[i][44]])
 
 	winpct(ppfile[i][96],ppfile[i][97],i)
-
+	lasix(ppfile[i][61],i)
 
 print results
 print
